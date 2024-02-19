@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"slices"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
@@ -13,10 +14,16 @@ import (
 
 func main() {
 	var domain string
+	allDocTypes := []string{"js", "css", "a"}
 	flag.StringVar(&domain, "domain", "", "The target domain to collect js files from <urlLink>")
 	docType := flag.String("docType", "js", "The documentType e.g. js | css | a ")
 	flag.Parse()
 
+	if !slices.Contains(allDocTypes, *docType) {
+		err := "Error: docType not acceptable"
+		fmt.Printf("\nError: %v is not an acceptable docType within %v.\n", *docType, allDocTypes)
+		log.Fatal(err)
+	}
 	client := &http.Client{}
 
 	req, err := http.NewRequest("GET", domain, nil)
