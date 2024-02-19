@@ -4,6 +4,10 @@ A simple tool to collect all document type files/hrefs from a domain.
 
 ## Getting Started
 
+### Overview
+
+![go-domain-crawler overview](./overview.png)
+
 ### Installation
 ```
 go get -u github.com/kojoluh/go-domain-crawler
