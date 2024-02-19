@@ -1,4 +1,4 @@
-# document crawler
+# Go domain crawler
 
 A simple tool to collect all document type files/hrefs from a domain.
 
